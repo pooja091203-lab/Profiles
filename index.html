@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f3ee" />
+    <title>People in Blocks — Generative Poster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="masthead">
+        <a class="wordmark" href="#" aria-label="People in Blocks, home">
+          <span class="wordmark-mark" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span>FORM / FEELING</span>
+        </a>
+        <div class="edition">AN OPEN-ENDED STUDY&nbsp; · &nbsp;NO. 004</div>
+      </header>
+
+      <section class="intro" aria-labelledby="title">
+        <div>
+          <p class="eyebrow"><span class="live-dot"></span> A LIVING GEOMETRIC POSTER</p>
+          <h1 id="title">People in <span>blocks.</span></h1>
+        </div>
+        <p class="intro-note">
+          Twenty little worlds, finding their own rhythm.<br />
+          Press play. Give the shapes a little room.
+        </p>
+      </section>
+
+      <section class="workbench" aria-label="Animated poster and controls">
+        <div class="artwork-shell">
+          <div class="artwork-topline">
+            <span>01 — STUDY OF MOTION</span>
+            <span class="frame-label"><span id="frame-state">IN MOTION</span><i></i></span>
+          </div>
+          <div class="poster-wrap">
+            <svg
+              id="poster"
+              viewBox="0 0 1000 1000"
+              role="img"
+              aria-labelledby="poster-title poster-description"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <title id="poster-title">People in Blocks</title>
+              <desc id="poster-description">
+                Twenty colorful geometric panels with simple white circular heads and vivid,
+                abstract bodies, gently shifting and changing color in a seamless loop.
+              </desc>
+              <defs id="poster-defs"></defs>
+              <rect width="1000" height="1000" fill="#fff"></rect>
+              <g id="poster-grid" transform="translate(65 65)"></g>
+              <g id="merge-layer" transform="translate(65 65)" aria-hidden="true"></g>
+            </svg>
+            <div class="poster-index" aria-hidden="true">4 × 5</div>
+          </div>
+          <div class="artwork-caption">
+            <span>FIGURES IN GOOD COMPANY</span>
+            <span>VECTOR STUDY&nbsp; / &nbsp;2026</span>
+          </div>
+        </div>
+
+        <aside class="controls" aria-label="Animation controls">
+          <div class="controls-heading">
+            <span class="eyebrow">THE PLAYGROUND</span>
+            <span class="control-count">01—05</span>
+          </div>
+
+          <button class="play-control" id="play-toggle" type="button" aria-pressed="true">
+            <span class="play-icon" aria-hidden="true"><span></span></span>
+            <span class="play-label">Pause the poster</span>
+            <span class="shortcut" aria-hidden="true">SPACE</span>
+          </button>
+
+          <div class="speed-control">
+            <div class="range-heading">
+              <label for="speed">Animation speed</label>
+              <output id="speed-value" for="speed">1.0×</output>
+            </div>
+            <input id="speed" type="range" min="0.35" max="1.8" step="0.05" value="1" />
+            <div class="range-labels"><span>DRIFT</span><span>HUSTLE</span></div>
+          </div>
+
+          <div class="action-list" aria-label="Motion studies">
+            <button class="action-button" id="color-swap" type="button">
+              <span class="action-symbol color-symbol" aria-hidden="true"><i></i><i></i></span>
+              <span>Trade the colors</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="action-button" id="grid-shift" type="button">
+              <span class="action-symbol shift-symbol" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>Shift the grid</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="action-button" id="merge-blocks" type="button">
+              <span class="action-symbol merge-symbol" aria-hidden="true"><i></i><i></i></span>
+              <span>Bring blocks together</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <button class="reset-control" id="reset" type="button">
+            <span aria-hidden="true">↺</span> Back to the beginning
+          </button>
+
+          <div class="palette-note">
+            <span class="eyebrow">THE COLOR CAST</span>
+            <div class="swatches" aria-label="Original color palette">
+              <i style="--swatch:#0878f9" title="Electric blue"></i>
+              <i style="--swatch:#ff0064" title="Bright magenta"></i>
+              <i style="--swatch:#d9ef00" title="Lime yellow"></i>
+              <i style="--swatch:#19b500" title="Vivid green"></i>
+              <i style="--swatch:#05083f" title="Deep navy"></i>
+              <i style="--swatch:#c8c8c8" title="Light grey"></i>
+              <i style="--swatch:#ffffff" title="White"></i>
+            </div>
+            <span class="palette-copy">A few familiar colors, up to new things.</span>
+          </div>
+          <p class="keyboard-hint">TIP: HIT <kbd>SPACE</kbd> TO PAUSE / PLAY</p>
+
+          <div class="advanced-controls">
+            <p class="eyebrow advanced-title">MORE WAYS TO PLAY</p>
+
+            <details class="control-section" open>
+              <summary>Playback <span>01</span></summary>
+              <div class="section-content">
+                <div class="range-heading"><label for="overall-speed">Overall speed</label><output data-output="overall-speed">1.00×</output></div>
+                <input id="overall-speed" type="range" min="0.25" max="2" step="0.05" value="1" />
+                <label class="check-row"><input id="loop-enabled" type="checkbox" checked /> Loop continuously</label>
+                <div class="timeline-row"><span id="timeline-time">00.0 s</span><input id="timeline-progress" type="range" min="0" max="100" step="0.1" value="0" aria-label="Timeline progress" /><span>20 s</span></div>
+                <button class="mini-reset" type="button" data-reset-section="playback">Reset playback</button>
+              </div>
+            </details>
+
+            <details class="control-section">
+              <summary>Grid controls <span>02</span></summary>
+              <div class="section-content">
+                <div class="button-pair">
+                  <button class="small-button" id="rearrange-grid" type="button">Rearrange blocks</button>
+                  <button class="small-button" id="rotate-grid" type="button">Rotate rows</button>
+                  <button class="small-button" id="rotate-columns" type="button">Rotate columns</button>
+                </div>
+                <div class="range-heading"><label for="horizontal-range">Horizontal travel</label><output data-output="horizontal-range">12 px</output></div>
+                <input id="horizontal-range" type="range" min="0" max="36" step="1" value="12" />
+                <div class="range-heading"><label for="vertical-range">Vertical travel</label><output data-output="vertical-range">12 px</output></div>
+                <input id="vertical-range" type="range" min="0" max="36" step="1" value="12" />
+                <div class="range-heading"><label for="block-speed">Block movement speed</label><output data-output="block-speed">1.00×</output></div>
+                <input id="block-speed" type="range" min="0" max="3" step="0.05" value="1" />
+                <div class="range-heading"><label for="grid-rotation">Rotation angle</label><output data-output="grid-rotation">0°</output></div>
+                <input id="grid-rotation" type="range" min="0" max="18" step="1" value="0" />
+                <div class="range-heading"><label for="grid-gap">Grid spacing</label><output data-output="grid-gap">0 px</output></div>
+                <input id="grid-gap" type="range" min="0" max="8" step="1" value="0" />
+                <div class="range-heading"><label for="cell-size">Block size</label><output data-output="cell-size">100%</output></div>
+                <input id="cell-size" type="range" min="70" max="115" step="1" value="100" />
+                <div class="check-grid">
+                  <label class="check-row"><input id="animate-rows" type="checkbox" checked /> Rows</label>
+                  <label class="check-row"><input id="animate-columns" type="checkbox" checked /> Columns</label>
+                  <label class="check-row"><input id="animate-rotation" type="checkbox" /> Rotation</label>
+                  <label class="check-row"><input id="allow-overlap" type="checkbox" /> Allow overlap</label>
+                </div>
+                <div class="button-pair">
+                  <button class="small-button" id="merge-blocks-advanced" type="button">Merge / split</button>
+                  <button class="small-button" id="restore-layout" type="button">Original layout</button>
+                </div>
+                <button class="mini-reset" type="button" data-reset-section="grid">Reset grid controls</button>
+              </div>
+            </details>
+
+            <details class="control-section">
+              <summary>Shape controls <span>03</span></summary>
+              <div class="section-content">
+                <div class="range-heading"><label for="circle-speed">Circle speed</label><output data-output="circle-speed">1.00×</output></div>
+                <input id="circle-speed" type="range" min="0" max="3" step="0.05" value="1" />
+                <div class="range-heading"><label for="circle-range">Circle movement range</label><output data-output="circle-range">12 px</output></div>
+                <input id="circle-range" type="range" min="0" max="35" step="1" value="12" />
+                <div class="range-heading"><label for="circle-x-range">Circle horizontal travel</label><output data-output="circle-x-range">8 px</output></div>
+                <input id="circle-x-range" type="range" min="0" max="35" step="1" value="8" />
+                <div class="range-heading"><label for="circle-y-range">Circle vertical travel</label><output data-output="circle-y-range">12 px</output></div>
+                <input id="circle-y-range" type="range" min="0" max="35" step="1" value="12" />
+                <div class="range-heading"><label for="body-speed">Body speed</label><output data-output="body-speed">1.00×</output></div>
+                <input id="body-speed" type="range" min="0" max="3" step="0.05" value="1" />
+                <div class="range-heading"><label for="body-range">Body movement range</label><output data-output="body-range">5%</output></div>
+                <input id="body-range" type="range" min="0" max="18" step="1" value="5" />
+                <div class="range-heading"><label for="shape-size">Shape size</label><output data-output="shape-size">100%</output></div>
+                <input id="shape-size" type="range" min="65" max="125" step="1" value="100" />
+                <div class="range-heading"><label for="shape-rotation">Shape rotation</label><output data-output="shape-rotation">0°</output></div>
+                <input id="shape-rotation" type="range" min="-20" max="20" step="1" value="0" />
+                <div class="range-heading"><label for="circle-size">Circle size</label><output data-output="circle-size">100%</output></div>
+                <input id="circle-size" type="range" min="60" max="150" step="1" value="100" />
+                <div class="range-heading"><label for="body-size">Body size</label><output data-output="body-size">100%</output></div>
+                <input id="body-size" type="range" min="65" max="125" step="1" value="100" />
+                <div class="range-heading"><label for="circle-rotation">Circle rotation</label><output data-output="circle-rotation">0°</output></div>
+                <input id="circle-rotation" type="range" min="-30" max="30" step="1" value="0" />
+                <div class="range-heading"><label for="body-rotation">Body rotation</label><output data-output="body-rotation">0°</output></div>
+                <input id="body-rotation" type="range" min="-30" max="30" step="1" value="0" />
+                <div class="check-grid">
+                  <label class="check-row"><input id="animate-circles" type="checkbox" checked /> Animate circles</label>
+                  <label class="check-row"><input id="animate-bodies" type="checkbox" checked /> Animate bodies</label>
+                  <label class="check-row"><input id="morph-shapes" type="checkbox" checked /> Shape morphing</label>
+                </div>
+                <button class="mini-reset" type="button" data-reset-section="shapes">Reset shape controls</button>
+              </div>
+            </details>
+
+            <details class="control-section">
+              <summary>Color &amp; gradients <span>04</span></summary>
+              <div class="section-content">
+                <label class="field-label" for="selected-cell">Selected block</label>
+                <select id="selected-cell">
+                  <option value="all">All blocks</option>
+                </select>
+                <div class="color-pickers">
+                  <label>Background<input id="pick-background" type="color" value="#d9ef00" /></label>
+                  <label>Body<input id="pick-body" type="color" value="#ff0064" /></label>
+                  <label>Circle<input id="pick-circle" type="color" value="#ffffff" /></label>
+                </div>
+                <div class="button-pair">
+                  <button class="small-button" id="apply-colors" type="button">Apply colors</button>
+                  <button class="small-button" id="randomize-colors" type="button">Random colors</button>
+                </div>
+                <div class="button-pair">
+                  <button class="small-button" id="save-palette" type="button">Save palette</button>
+                  <button class="small-button" id="restore-colors" type="button">Original colors</button>
+                </div>
+                <label class="field-label" for="saved-palettes">Saved palettes</label>
+                <select id="saved-palettes"><option value="">Choose a saved palette</option></select>
+                <label class="check-row"><input id="auto-colors" type="checkbox" checked /> Automatic color swapping</label>
+                <div class="range-heading"><label for="color-speed">Color speed</label><output data-output="color-speed">1.00×</output></div>
+                <input id="color-speed" type="range" min="0.1" max="3" step="0.05" value="1" />
+                <label class="field-label" for="gradient-mode">Gradient style</label>
+                <select id="gradient-mode">
+                  <option value="flat">Flat color</option>
+                  <option value="subtle">Subtle linear</option>
+                  <option value="bold">Expressive linear</option>
+                  <option value="radial">Soft radial</option>
+                </select>
+                <div class="range-heading"><label for="gradient-angle">Gradient angle</label><output data-output="gradient-angle">35°</output></div>
+                <input id="gradient-angle" type="range" min="0" max="360" step="1" value="35" />
+                <div class="range-heading"><label for="gradient-intensity">Gradient intensity</label><output data-output="gradient-intensity">45%</output></div>
+                <input id="gradient-intensity" type="range" min="0" max="100" step="1" value="45" />
+                <div class="range-heading"><label for="gradient-speed">Gradient speed</label><output data-output="gradient-speed">1.00×</output></div>
+                <input id="gradient-speed" type="range" min="0" max="3" step="0.05" value="1" />
+                <button class="mini-reset" type="button" data-reset-section="colors">Reset color controls</button>
+              </div>
+            </details>
+
+            <details class="control-section">
+              <summary>Motion &amp; presets <span>05</span></summary>
+              <div class="section-content">
+                <div class="range-heading"><label for="row-speed">Row / column speed</label><output data-output="row-speed">1.00×</output></div>
+                <input id="row-speed" type="range" min="0" max="3" step="0.05" value="1" />
+                <div class="range-heading"><label for="rotation-speed">Rotation speed</label><output data-output="rotation-speed">1.00×</output></div>
+                <input id="rotation-speed" type="range" min="0" max="3" step="0.05" value="1" />
+                <div class="range-heading"><label for="zoom-speed">Zoom / scale speed</label><output data-output="zoom-speed">1.00×</output></div>
+                <input id="zoom-speed" type="range" min="0" max="3" step="0.05" value="1" />
+                <label class="field-label" for="rotation-direction">Rotation direction</label>
+                <select id="rotation-direction">
+                  <option value="alternate">Alternate</option>
+                  <option value="clockwise">Clockwise</option>
+                  <option value="counterclockwise">Counterclockwise</option>
+                </select>
+                <label class="field-label" for="preset-select">Animation preset</label>
+                <select id="preset-select">
+                  <option value="original">Original Composition</option>
+                  <option value="shifting">Shifting Grid</option>
+                  <option value="floating">Floating Circles</option>
+                  <option value="rotating">Rotating Blocks</option>
+                  <option value="shuffle">Color Shuffle</option>
+                  <option value="gradient">Gradient Flow</option>
+                  <option value="merging">Merging Blocks</option>
+                  <option value="experimental">Full Experimental Mode</option>
+                </select>
+                <button class="small-button full-button" id="randomize-all" type="button">Randomize the whole playground</button>
+                <button class="mini-reset" type="button" data-reset-section="motion">Reset motion controls</button>
+              </div>
+            </details>
+            <button class="master-reset" id="master-reset" type="button">Reset entire playground</button>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="footer">
+        <span>MADE OF CIRCLES, SOFT CORNERS &amp; A LITTLE CURIOSITY.</span>
+        <span>TAKE YOUR TIME <b>✳</b></span>
+      </footer>
+    </main>
+    <div class="motion-message" id="motion-message" role="status" aria-live="polite" hidden>
+      The animation library couldn’t load. Check your connection and refresh to play the poster.
+    </div>
+  </body>
+</html>
